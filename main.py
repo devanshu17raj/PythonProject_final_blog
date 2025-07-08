@@ -15,13 +15,15 @@ from datetime import date
 from datetime import datetime
 #from flask_ckeditor.utils import cleanify
 from time import strftime
+import  os
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 MY_EMAIL = "harry17raj@gmail.com"
 MY_PASSWORD = "ywwk hfzb pbhh cvyn"
 
 app=Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+#app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 Bootstrap(app)
 name="Devanshu"
 ckeditor = CKEditor(app)
@@ -271,4 +273,4 @@ def logout():
 
 
 if __name__== "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
